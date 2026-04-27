@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coiffeur Zürich — Atelier Meier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Hero background image */
+    .hero-bg {
+      background-image:
+        linear-gradient(to right, rgba(13,10,6,0.88) 40%, rgba(13,10,6,0.2) 100%),
+        url('images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ HEADER ═══════ -->
+<header class="header dark-bg">
+  <a href="index.html" class="nav-logo">
+    ✦ Atelier Meier
+    <span>Coiffeur · Zürich</span>
+  </a>
+  <nav class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="produkte.html">Leistungen</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="buchen.html">Termin</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <div class="nav-right">
+    <a href="buchen.html" class="btn btn-gold">Termin buchen</a>
+    <button class="hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="produkte.html">Leistungen & Preise</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="buchen.html">Termin buchen</a>
+  <a href="kontakt.html">Kontakt</a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-img-accent"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Zürich · Seit 2011</div>
+    <h1>Precision.<br><em>Style. Identity.</em></h1>
+    <p class="hero-sub">Premium Haarstyling-Erfahrung in der Mitte Zürichs. Handwerk das begeistert.</p>
+    <div class="hero-ctas">
+      <a href="buchen.html" class="btn btn-gold">Termin vereinbaren</a>
+      <a href="produkte.html" class="btn btn-outline-light">Unsere Leistungen</a>
+    </div>
+    <div class="hero-bar">
+      <div><span class="hero-stat-num">12+</span><span class="hero-stat-label">Jahre Erfahrung</span></div>
+      <div><span class="hero-stat-num">4k+</span><span class="hero-stat-label">Zufriedene Kunden</span></div>
+      <div><span class="hero-stat-num">6</span><span class="hero-stat-label">Experten</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Entdecken</span>
+  </div>
+</section>
+
+<!-- ═══════ BESTSELLER ═══════ -->
+<section class="section bg-cream">
+  <div class="fade-up">
+    <span class="label">Top Frisuren</span>
+    <h2 class="section-title">Unsere <em>Bestseller</em></h2>
+    <div class="divider-gold"></div>
+    <p style="color:var(--taupe);font-size:0.88rem;max-width:520px;margin-bottom:0;">Fahre mit der Maus über die Karten um das Vorher/Nachher zu sehen.</p>
+  </div>
+  <div class="bestseller-grid">
+
+    <div class="style-card ba-balayage fade-up fade-up-delay-1">
+      <div class="before-after">
+        <div class="after-layer">
+          <div class="ba-img-text">✦<br>Balayage<br>Nachher</div>
+        </div>
+        <div class="before-layer">
+          <div class="ba-img-text" style="color:rgba(30,24,18,0.45);">✦<br>Natürlich<br>Vorher</div>
+        </div>
+        <span class="ba-label after">Nachher</span>
+        <span class="ba-label before">Vorher</span>
+      </div>
+      <div class="style-card-body">
+        <span class="style-badge">Bestseller #1</span>
+        <div class="style-name">Sun-Kissed Balayage</div>
+        <p class="style-desc">Handgemalte Highlights für ein natürlich strahlendes Ergebnis.</p>
+        <span class="style-price">ab CHF 180</span>
+      </div>
+      <div class="hover-hint">Hover für Vorher/Nachher</div>
+    </div>
+
+    <div class="style-card ba-lob fade-up fade-up-delay-2">
+      <div class="before-after">
+        <div class="after-layer" style="background:linear-gradient(160deg,#1a1208,#3a2810);">
+          <div class="ba-img-text">✦<br>Lob Cut<br>Nachher</div>
+        </div>
+        <div class="before-layer" style="background:linear-gradient(160deg,#d0c8b8,#e0d8c8);">
+          <div class="ba-img-text" style="color:rgba(30,24,18,0.45);">✦<br>Lang<br>Vorher</div>
+        </div>
+        <span class="ba-label after">Nachher</span>
+        <span class="ba-label before">Vorher</span>
+      </div>
+      <div class="style-card-body">
+        <span class="style-badge">Bestseller #2</span>
+        <div class="style-name">Signature Lob</div>
+        <p class="style-desc">Der klassische Lob – präzise geschnitten, elegant und zeitlos.</p>
+        <span class="style-price">ab CHF 95</span>
+      </div>
+      <div class="hover-hint">Hover für Vorher/Nachher</div>
+    </div>
+
+    <div class="style-card ba-copper fade-up fade-up-delay-3">
+      <div class="before-after">
+        <div class="after-layer" style="background:linear-gradient(160deg,#5a3d28,#8a6040);">
+          <div class="ba-img-text" style="color:rgba(212,176,122,0.5);">✦<br>Kupfer<br>Nachher</div>
+        </div>
+        <div class="before-layer" style="background:linear-gradient(160deg,#9a9080,#b0a898);">
+          <div class="ba-img-text" style="color:rgba(30,24,18,0.4);">✦<br>Aschblond<br>Vorher</div>
+        </div>
+        <span class="ba-label after">Nachher</span>
+        <span class="ba-label before">Vorher</span>
+      </div>
+      <div class="style-card-body">
+        <span class="style-badge">Trend 2025</span>
+        <div class="style-name">Copper Gloss Colour</div>
+        <p class="style-desc">Warme Kupfertöne für ausdrucksstarke Tiefe und Schimmer.</p>
+        <span class="style-price">ab CHF 160</span>
+      </div>
+      <div class="hover-hint">Hover für Vorher/Nachher</div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:3rem;">
+    <a href="produkte.html" class="btn btn-outline-dark">Alle Leistungen ansehen →</a>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section style="padding:0;" id="about">
+  <div class="about-layout">
+    <div class="about-visual">
+      <div class="about-circles">
+        <div class="about-circle" style="width:380px;height:380px;"></div>
+        <div class="about-circle" style="width:240px;height:240px;"></div>
+        <div class="about-circle" style="width:100px;height:100px;"></div>
+      </div>
+      <div class="about-person">
+        <div class="about-quote-visual">
+          <blockquote>"Haare sind der Rahmen des Gesichts — wir sorgen dafür, dass er passt."</blockquote>
+          <cite>— Max Mustermann, Inhaber</cite>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <span class="label">Über uns</span>
+      <h2 class="section-title">Leidenschaft für <em>Handwerk</em></h2>
+      <div class="divider-gold"></div>
+      <p>Seit über 12 Jahren ist Atelier Meier eine feste Größe in Zürichs Coiffeur-Szene. Was als kleines Studio im Kreis 4 begann, ist heute ein renommiertes Atelier mit sechs leidenschaftlichen Stylisten.</p>
+      <p>Wir glauben: Ein guter Haarschnitt verändert nicht nur das Äussere – er gibt dir Selbstbewusstsein zurück. Jede Beratung beginnt mit echtem Zuhören. Jede Behandlung endet mit einem Lächeln.</p>
+      <p>Unsere Produkte sind nachhaltig, unsere Techniken modern – und unsere Liebe zum Detail grenzenlos.</p>
+      <div class="team-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="team-card">
+          <div class="team-avatar">MM</div>
+          <div class="team-name">Max Mustermann</div>
+          <div class="team-role">Inhaber & Stylist</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">LK</div>
+          <div class="team-name">Lena Koch</div>
+          <div class="team-role">Colour Expertin</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">NA</div>
+          <div class="team-name">Nina Ammann</div>
+          <div class="team-role">Senior Stylistin</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">TP</div>
+          <div class="team-name">Tom Pfister</div>
+          <div class="team-role">Herrenschnitt</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">SA</div>
+          <div class="team-name">Sara Aslan</div>
+          <div class="team-role">Stylistin</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">EV</div>
+          <div class="team-name">Elena Vogt</div>
+          <div class="team-role">Lernende</div>
+        </div>
+      </div>
+      <div style="margin-top:2rem;">
+        <a href="buchen.html" class="btn btn-gold">Termin vereinbaren</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GALERIE VORSCHAU ═══════ -->
+<section class="section bg-cream">
+  <div class="fade-up" style="text-align:center;margin-bottom:3rem;">
+    <span class="label">Portfolio</span>
+    <h2 class="section-title">Unsere <em>Galerie</em></h2>
+    <div class="divider-gold center"></div>
+  </div>
+  <div class="gallery-masonry fade-up">
+    <div class="gallery-item"><div class="gal-1 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag">Balayage</span></div></div></div>
+    <div class="gallery-item"><div class="gal-2 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag" style="color:var(--espresso);background:rgba(255,255,255,0.7);">Schnitt</span></div></div></div>
+    <div class="gallery-item"><div class="gal-3 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag">Colour</span></div></div></div>
+    <div class="gallery-item"><div class="gal-7 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag" style="color:var(--espresso);background:rgba(255,255,255,0.7);">Styling</span></div></div></div>
+    <div class="gallery-item"><div class="gal-5 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag">Highlights</span></div></div></div>
+    <div class="gallery-item"><div class="gal-6 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag" style="color:var(--espresso);background:rgba(255,255,255,0.7);">Bridal</span></div></div></div>
+    <div class="gallery-item"><div class="gal-4 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag">Herren</span></div></div></div>
+    <div class="gallery-item"><div class="gal-8 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag" style="color:var(--espresso);background:rgba(255,255,255,0.7);">Treatment</span></div></div></div>
+    <div class="gallery-item"><div class="gal-9 gallery-item-img"><div class="gallery-item-overlay"><span class="gallery-item-tag">Curls</span></div></div></div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;">
+    <a href="galerie.html" class="btn btn-outline-dark">Zur vollständigen Galerie →</a>
+  </div>
+</section>
+
+<!-- ═══════ BEWERTUNGEN ═══════ -->
+<section class="section">
+  <div class="fade-up">
+    <span class="label">Kundenstimmen</span>
+    <h2 class="section-title">Was unsere Kunden <em>sagen</em></h2>
+    <div class="divider-gold"></div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-up fade-up-delay-1">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">"Ich komme seit Jahren und jedes Mal verlasse ich den Salon mit einem Lächeln. Max hat ein unglaubliches Gespür für das, was mir wirklich steht."</p>
+      <div class="review-author-row">
+        <div class="review-avatar">MH</div>
+        <div>
+          <div class="review-name">Miriam H.</div>
+          <span class="review-service">Balayage & Schnitt</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up fade-up-delay-2">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">"Lena hat meine Haare komplett transformiert. Die Farbe sieht aus wie aus einer Hochglanz-Zeitschrift – und hält auch noch nach Wochen."</p>
+      <div class="review-author-row">
+        <div class="review-avatar">SK</div>
+        <div>
+          <div class="review-name">Sophie K.</div>
+          <span class="review-service">Copper Colour</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up fade-up-delay-3">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">"Endlich ein Coiffeur der zuhört! Ich habe erklärt was ich möchte – und genau das bekommen. Professionell, entspannt, einfach toll."</p>
+      <div class="review-author-row">
+        <div class="review-avatar">TP</div>
+        <div>
+          <div class="review-name">Thomas P.</div>
+          <span class="review-service">Herrenschnitt</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up fade-up-delay-1">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">"Meine Hochzeitslocken waren einfach traumhaft. Nina ist eine Künstlerin – ich bekomme heute noch Komplimente."</p>
+      <div class="review-author-row">
+        <div class="review-avatar">LB</div>
+        <div>
+          <div class="review-name">Laura B.</div>
+          <span class="review-service">Bridal Styling</span>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up fade-up-delay-2">
+      <span class="review-stars">★★★★★</span>
+      <p class="review-text">"Top Qualität, super freundliches Team und faire Preise. Werde auf keinen Fall mehr woanders hingehen. Absolut empfehlenswert!"</p>
+      <div class="review-author-row">
+        <div class="review-avatar">AM</div>
+        <div>
+          <div class="review-name">Anna M.</div>
+          <span class="review-service">Schnitt & Styling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-brand-name">✦ Atelier Meier</span>
+      <span class="footer-brand-sub">Coiffeur · Zürich</span>
+      <p>Ihr Premium-Coiffeur im Herzen Zürichs. Seit 2011 stehen wir für Qualität, Leidenschaft und persönliche Beratung.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </a>
+        <a href="https://www.pinterest.com/" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.17 1.22-5.17s-.31-.62-.31-1.54c0-1.45.84-2.53 1.88-2.53.89 0 1.32.67 1.32 1.47 0 .9-.57 2.23-.87 3.47-.25 1.04.52 1.88 1.54 1.88 1.85 0 3.09-2.37 3.09-5.17 0-2.14-1.44-3.73-4.04-3.73-2.94 0-4.76 2.2-4.76 4.64 0 .84.24 1.43.62 1.89.17.2.19.28.13.51-.04.17-.14.57-.18.73-.06.23-.24.31-.44.23-1.24-.51-1.82-1.88-1.82-3.42 0-2.52 2.12-5.53 6.33-5.53 3.38 0 5.6 2.44 5.6 5.07 0 3.45-1.91 6.02-4.71 6.02-.94 0-1.83-.51-2.13-1.08l-.59 2.27c-.21.82-.78 1.84-1.16 2.46.87.27 1.8.42 2.76.42 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="produkte.html">Leistungen & Preise</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="buchen.html">Termin buchen</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Leistungen</h4>
+      <ul>
+        <li><a href="produkte.html">Schnitt & Styling</a></li>
+        <li><a href="produkte.html">Balayage</a></li>
+        <li><a href="produkte.html">Färben</a></li>
+        <li><a href="produkte.html">Treatments</a></li>
+        <li><a href="produkte.html">Bridal</a></li>
+        <li><a href="produkte.html">Herrenschnitt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <div class="footer-contact-line"><span>📍</span><span>Musterstrasse 12<br>8004 Zürich</span></div>
+      <div class="footer-contact-line"><span>📞</span><span>+41 44 123 45 67</span></div>
+      <div class="footer-contact-line"><span>✉</span><span>info@atelier-meier.ch</span></div>
+      <div class="footer-contact-line" style="margin-top:0.8rem;"><span>🕐</span><span>Di–Fr 9–19 Uhr<br>Sa 9–17 Uhr</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Atelier Meier – Coiffeur Zürich. Alle Rechte vorbehalten.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">AGB</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

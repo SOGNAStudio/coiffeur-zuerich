@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie — Atelier Meier Zürich</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--espresso) 0%, #2a1e10 60%, var(--espresso-mid) 100%);
+      padding: calc(var(--header-h) + 4rem) 5% 4rem;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(184,147,90,0.02) 61px);
+    }
+    .page-hero-content { position: relative; z-index: 1; }
+
+    /* Filter tabs */
+    .gallery-filters {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-tab {
+      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius);
+      background: transparent; color: var(--taupe);
+      cursor: pointer; transition: all 0.2s;
+      font-family: var(--sans);
+    }
+    .filter-tab:hover { border-color: var(--gold); color: var(--gold-dark); }
+    .filter-tab.active { background: var(--espresso); color: var(--cream); border-color: var(--espresso); }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(13,10,6,0.95);
+      z-index: 2000; align-items: center; justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 80vw; max-height: 80vh;
+      border: 1px solid var(--border-gold);
+    }
+    .lightbox-close {
+      position: absolute; top: 2rem; right: 2rem;
+      background: none; border: 1px solid var(--border-light);
+      color: var(--cream); width: 44px; height: 44px;
+      border-radius: var(--radius); font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .lightbox-close:hover { background: var(--espresso-mid); }
+    .lightbox-caption {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      font-family: var(--serif); font-size: 0.9rem; font-style: italic;
+      color: var(--gold-light); letter-spacing: 0.06em;
+    }
+
+    /* Extended gallery */
+    .gallery-masonry-ext { columns: 4; column-gap: 0.75rem; }
+    .gallery-item-ext {
+      break-inside: avoid; margin-bottom: 0.75rem;
+      position: relative; overflow: hidden;
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: 1px solid var(--border-dark);
+    }
+    .gallery-item-ext:hover .gal-overlay { background: rgba(30,24,18,0.45); }
+    .gallery-item-ext:hover .gal-overlay-tag { opacity: 1; }
+    .gallery-item-ext:hover .gal-block { transform: scale(1.04); }
+    .gal-block { transition: transform 0.5s ease; display: block; }
+    .gal-overlay {
+      position: absolute; inset: 0;
+      background: rgba(30,24,18,0); transition: background 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gal-overlay-tag {
+      font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cream); opacity: 0; transition: opacity 0.3s;
+      background: rgba(184,147,90,0.85); padding: 0.28rem 0.75rem;
+      border-radius: var(--radius);
+    }
+
+    /* Before/After gallery row */
+    .ba-showcase {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+      gap: 1.5rem; margin-top: 2rem;
+    }
+
+    @media (max-width: 900px) { .gallery-masonry-ext { columns: 3; } }
+    @media (max-width: 640px) { .gallery-masonry-ext { columns: 2; } }
+    @media (max-width: 400px) { .gallery-masonry-ext { columns: 1; } }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="nav-logo">✦ Atelier Meier<span>Coiffeur · Zürich</span></a>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="produkte.html">Leistungen</a>
+    <a href="galerie.html" class="active">Galerie</a>
+    <a href="buchen.html">Termin</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <div class="nav-right">
+    <a href="buchen.html" class="btn btn-gold">Termin buchen</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="index.html">Home</a><a href="produkte.html">Leistungen</a>
+  <a href="galerie.html">Galerie</a><a href="buchen.html">Termin</a><a href="kontakt.html">Kontakt</a>
+</nav>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <span class="label">Portfolio</span>
+    <h1 class="section-title light" style="font-size:clamp(2rem,5vw,3.5rem);">Unsere <em>Arbeiten</em></h1>
+    <div class="divider-gold"></div>
+    <p style="color:rgba(247,244,239,0.5);font-size:0.87rem;max-width:480px;">Hover für Vorher/Nachher · Klick zum Vergrössern</p>
+  </div>
+</div>
+
+<section class="section bg-cream">
+
+  <!-- Filter Tabs -->
+  <div class="gallery-filters fade-up">
+    <button class="filter-tab active" onclick="filterGallery('all', this)">Alle</button>
+    <button class="filter-tab" onclick="filterGallery('schnitt', this)">Schnitt</button>
+    <button class="filter-tab" onclick="filterGallery('balayage', this)">Balayage</button>
+    <button class="filter-tab" onclick="filterGallery('color', this)">Colorationen</button>
+    <button class="filter-tab" onclick="filterGallery('styling', this)">Styling</button>
+    <button class="filter-tab" onclick="filterGallery('herren', this)">Herren</button>
+    <button class="filter-tab" onclick="filterGallery('bridal', this)">Bridal</button>
+  </div>
+
+  <!-- Masonry Gallery -->
+  <div class="gallery-masonry-ext fade-up" id="gallery-grid">
+
+    <div class="gallery-item-ext" data-cat="balayage" onclick="openLightbox('Balayage — Sun-Kissed')">
+      <div class="gal-block gal-1" style="aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.35);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Balayage</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="schnitt" onclick="openLightbox('Signature Lob — Schnitt')">
+      <div class="gal-block gal-2" style="aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.35);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag" style="color:var(--espresso);background:rgba(255,255,255,0.75);">Schnitt</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="color" onclick="openLightbox('Copper Gloss — Coloration')">
+      <div class="gal-block gal-3" style="aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.35);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Coloration</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="styling" onclick="openLightbox('Event Styling')">
+      <div class="gal-block gal-4" style="aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.35);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag" style="color:var(--espresso);background:rgba(255,255,255,0.75);">Styling</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="balayage" onclick="openLightbox('Platinum Blonde')">
+      <div class="gal-block gal-5" style="aspect-ratio:5/6;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.3);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Platinum</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="herren" onclick="openLightbox('Herrenschnitt Classic')">
+      <div class="gal-block gal-7" style="aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.35);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag" style="color:var(--espresso);background:rgba(255,255,255,0.75);">Herren</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="bridal" onclick="openLightbox('Bridal Updo')">
+      <div class="gal-block gal-6" style="aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.3);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Bridal</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="schnitt" onclick="openLightbox('French Bob')">
+      <div class="gal-block gal-bob-real" style="aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.35);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag" style="color:var(--espresso);background:rgba(255,255,255,0.75);">Bob</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="color" onclick="openLightbox('Deep Auburn')">
+      <div class="gal-block gal-9" style="aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.3);">✦<br></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Auburn</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="balayage" onclick="openLightbox('Ombré Effect')">
+      <div class="gal-block gal-ombre-real" style="aspect-ratio:2/3;"></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Ombré</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="styling" onclick="openLightbox('Beach Waves')">
+      <div class="gal-block gal-waves-real" style="aspect-ratio:4/5;"></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag" style="color:var(--espresso);background:rgba(255,255,255,0.75);">Waves</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="color" onclick="openLightbox('Caramel Glaze')">
+      <div class="gal-block gal-12" style="aspect-ratio:3/4;"></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Caramel</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="schnitt" onclick="openLightbox('Curtain Layers')">
+      <div class="gal-block gal-13" style="aspect-ratio:1/1;"></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag" style="color:var(--espresso);background:rgba(255,255,255,0.75);">Layers</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="bridal" onclick="openLightbox('Bridal Braids')">
+      <div class="gal-block gal-bridal-2" style="aspect-ratio:2/3;"></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Braids</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="herren" onclick="openLightbox('Undercut Modern')">
+      <div class="gal-block gal-15" style="aspect-ratio:5/4;"></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Undercut</span></div>
+    </div>
+
+    <div class="gallery-item-ext" data-cat="balayage" onclick="openLightbox('Face-Framing Highlights')">
+      <div class="gal-block gal-highlights-2" style="aspect-ratio:3/4;"></div>
+      <div class="gal-overlay"><span class="gal-overlay-tag">Highlights</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Before/After Showcase -->
+<section class="section">
+  <div class="fade-up" style="text-align:center;">
+    <span class="label">Transformationen</span>
+    <h2 class="section-title">Vorher / <em>Nachher</em></h2>
+    <div class="divider-gold center"></div>
+    <p style="color:var(--taupe);font-size:0.87rem;max-width:460px;margin:0 auto 1rem;">Fahre mit der Maus über die Bilder für den Vergleich.</p>
+  </div>
+  <div class="ba-showcase">
+    <div class="style-card ba-balayage fade-up">
+      <div class="before-after">
+        <div class="after-layer"><div class="ba-img-text">✦<br>Balayage<br>Nachher</div></div>
+        <div class="before-layer"><div class="ba-img-text" style="color:rgba(30,24,18,0.4);">✦<br>Naturton<br>Vorher</div></div>
+        <span class="ba-label after">Nachher</span><span class="ba-label before">Vorher</span>
+      </div>
+      <div class="style-card-body">
+        <div class="style-name">Balayage Transformation</div>
+        <p class="style-desc">Von Naturton zu strahlendem Balayage.</p>
+        <span class="style-price">ab CHF 180</span>
+      </div>
+    </div>
+    <div class="style-card ba-copper fade-up fade-up-delay-1">
+      <div class="before-after">
+        <div class="after-layer" style="background:linear-gradient(160deg,#5a3d28,#8a6040);"><div class="ba-img-text" style="color:rgba(212,176,122,0.5);">✦<br>Copper<br>Nachher</div></div>
+        <div class="before-layer" style="background:linear-gradient(160deg,#9a9080,#b0a898);"><div class="ba-img-text" style="color:rgba(30,24,18,0.4);">✦<br>Aschblond<br>Vorher</div></div>
+        <span class="ba-label after">Nachher</span><span class="ba-label before">Vorher</span>
+      </div>
+      <div class="style-card-body">
+        <div class="style-name">Copper Gloss</div>
+        <p class="style-desc">Warmer Kupferton für mehr Ausdruckskraft.</p>
+        <span class="style-price">ab CHF 160</span>
+      </div>
+    </div>
+    <div class="style-card ba-lob fade-up fade-up-delay-2">
+      <div class="before-after">
+        <div class="after-layer" style="background:linear-gradient(160deg,#1a1208,#3a2810);"><div class="ba-img-text">✦<br>Lob<br>Nachher</div></div>
+        <div class="before-layer" style="background:linear-gradient(160deg,#d0c8b8,#e0d8c8);"><div class="ba-img-text" style="color:rgba(30,24,18,0.4);">✦<br>Lang<br>Vorher</div></div>
+        <span class="ba-label after">Nachher</span><span class="ba-label before">Vorher</span>
+      </div>
+      <div class="style-card-body">
+        <div class="style-name">Signature Lob</div>
+        <p class="style-desc">Vom langen Haar zum präzisen Lob-Schnitt.</p>
+        <span class="style-price">ab CHF 95</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lb-image-wrap" id="lightbox-image" onclick="event.stopPropagation()"></div>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-brand-name">✦ Atelier Meier</span>
+      <span class="footer-brand-sub">Coiffeur · Zürich</span>
+      <p>Ihr Premium-Coiffeur im Herzen Zürichs. Seit 2011.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="produkte.html">Leistungen</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="buchen.html">Termin</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-col"><h4>Kontakt</h4><div class="footer-contact-line"><span>📍</span><span>Musterstrasse 12, 8004 Zürich</span></div><div class="footer-contact-line"><span>📞</span><span>+41 44 123 45 67</span></div><div class="footer-contact-line"><span>✉</span><span>info@atelier-meier.ch</span></div></div>
+    <div class="footer-col"><h4>Öffnungszeiten</h4><div class="footer-contact-line"><span>🕐</span><span>Di–Fr: 9–19 Uhr<br>Sa: 9–17 Uhr<br>Mo + So: Geschlossen</span></div></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Atelier Meier – Coiffeur Zürich</p>
+    <div class="footer-bottom-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.gallery-item-ext').forEach(item => {
+      if (cat === 'all' || item.dataset.cat === cat) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+  function openLightbox(title, evt) {
+    var caption = document.getElementById('lightbox-caption');
+    var box = document.getElementById('lightbox-image');
+    caption.textContent = title + ' — Atelier Meier Zürich';
+    // Find the inner .gal-block of the clicked gallery item to copy its background
+    var item = (evt && evt.currentTarget) ? evt.currentTarget : (window.event && window.event.currentTarget);
+    var bg = '';
+    if (item) {
+      var block = item.querySelector('.gal-block');
+      if (block) {
+        bg = window.getComputedStyle(block).backgroundImage;
+      }
+    }
+    box.style.backgroundImage = bg || 'linear-gradient(160deg,#2a1e10,#1a1208)';
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  // Re-bind onclicks to pass event
+  document.querySelectorAll('.gallery-item-ext').forEach(function(el){
+    var orig = el.getAttribute('onclick') || '';
+    var m = orig.match(/openLightbox\('([^']+)'\)/);
+    if (m) {
+      var title = m[1];
+      el.removeAttribute('onclick');
+      el.addEventListener('click', function(e){ e.preventDefault(); openLightbox(title, e); });
+    }
+  });
+</script>
+</body>
+</html>

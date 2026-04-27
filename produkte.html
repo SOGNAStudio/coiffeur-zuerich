@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leistungen & Preise — Atelier Meier Zürich</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--espresso) 0%, #2a1e10 50%, var(--espresso-mid) 100%);
+      padding: calc(var(--header-h) + 4rem) 5% 4rem;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(184,147,90,0.02) 61px),
+                  repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,0.01) 61px);
+    }
+    .page-hero-content { position: relative; z-index: 1; }
+    .cc-style { background: linear-gradient(160deg,#2a1e10,#1a1208); }
+    .cc-cut { background: linear-gradient(160deg,#c8bfb2,#ddd8d0); }
+    .cc-color { background: linear-gradient(160deg,#5a3d28,#8a6040); }
+    .cc-before-style { background: linear-gradient(160deg,#9a9080,#b0a898); }
+    .cc-before-cut { background: linear-gradient(160deg,#ede8df,#d8d0c0); }
+    .cc-before-color { background: linear-gradient(160deg,#9a9080,#aaa098); }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="nav-logo">✦ Atelier Meier<span>Coiffeur · Zürich</span></a>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="produkte.html" class="active">Leistungen</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="buchen.html">Termin</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <div class="nav-right">
+    <a href="buchen.html" class="btn btn-gold">Termin buchen</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="index.html">Home</a><a href="produkte.html">Leistungen</a>
+  <a href="galerie.html">Galerie</a><a href="buchen.html">Termin</a><a href="kontakt.html">Kontakt</a>
+</nav>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <span class="label">Leistungen & Preise</span>
+    <h1 class="section-title light" style="font-size:clamp(2rem,5vw,3.5rem);">Alles für dein <em>Traumhaar</em></h1>
+    <div class="divider-gold"></div>
+    <p style="color:rgba(247,244,239,0.5);font-size:0.88rem;max-width:560px;">Transparente Preise auf einen Blick — und darunter unsere Looks. Hover über die Bilder für Vorher/Nachher Vergleiche.</p>
+  </div>
+</div>
+
+<!-- ═══ PREISTABELLE ═══ -->
+<section class="section bg-cream">
+  <div class="fade-up" style="text-align:center;">
+    <span class="label">Unsere Preise</span>
+    <h2 class="section-title">Transparente <em>Preisliste</em></h2>
+    <div class="divider-gold center"></div>
+    <p style="color:var(--taupe);font-size:0.87rem;max-width:500px;margin:0 auto 1rem;">Alle Preise inkl. Beratung, Waschen, Schnitt, Föhnen & Styling. Individuelle Offerte auf Anfrage.</p>
+  </div>
+  <div class="price-grid fade-up">
+    <!-- Damen Schnitt -->
+    <div class="price-card">
+      <div class="price-card-header">
+        <span class="price-cat">Damen</span>
+        <div class="price-name">Schnitt & Styling</div>
+      </div>
+      <div class="price-card-body">
+        <div class="price-item">
+          <div><span class="price-item-name">Waschen, Schneiden, Föhnen</span><span class="price-item-desc">bis schulterlang</span></div>
+          <span class="price-item-price">CHF 95</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Waschen, Schneiden, Föhnen</span><span class="price-item-desc">lang / sehr lang</span></div>
+          <span class="price-item-price">CHF 115</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Nur Schnitt (trocken)</span></div>
+          <span class="price-item-price">CHF 65</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Pony schneiden</span></div>
+          <span class="price-item-price">CHF 20</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Blow-out / Föhnen</span></div>
+          <span class="price-item-price">CHF 55</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Farbe – featured -->
+    <div class="price-card featured">
+      <div class="price-card-header">
+        <span class="price-badge">Beliebt</span>
+        <span class="price-cat">Colorationen</span>
+        <div class="price-name">Farbe & Glanz</div>
+      </div>
+      <div class="price-card-body">
+        <div class="price-item">
+          <div><span class="price-item-name">Vollcoloration</span><span class="price-item-desc">inkl. Schnitt & Föhnen</span></div>
+          <span class="price-item-price">ab CHF 140</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Balayage / Ombré</span><span class="price-item-desc">handgemalt</span></div>
+          <span class="price-item-price">ab CHF 180</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Highlights (Folien)</span><span class="price-item-desc">partiell oder komplett</span></div>
+          <span class="price-item-price">ab CHF 130</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Glossing / Toning</span></div>
+          <span class="price-item-price">ab CHF 60</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Platinum Blondierung</span><span class="price-item-desc">aufwändige Aufhellung</span></div>
+          <span class="price-item-price">ab CHF 280</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Herren -->
+    <div class="price-card">
+      <div class="price-card-header">
+        <span class="price-cat">Herren</span>
+        <div class="price-name">Herrenschnitt</div>
+      </div>
+      <div class="price-card-body">
+        <div class="price-item">
+          <div><span class="price-item-name">Waschen & Schnitt</span></div>
+          <span class="price-item-price">CHF 65</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Schnitt & Styling</span><span class="price-item-desc">inkl. Produkte</span></div>
+          <span class="price-item-price">CHF 75</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Bart trimmen</span></div>
+          <span class="price-item-price">CHF 25</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Schnitt & Bart Kombi</span></div>
+          <span class="price-item-price">CHF 90</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Treatments -->
+    <div class="price-card">
+      <div class="price-card-header">
+        <span class="price-cat">Pflege</span>
+        <div class="price-name">Treatments</div>
+      </div>
+      <div class="price-card-body">
+        <div class="price-item">
+          <div><span class="price-item-name">Olaplex Treatment</span><span class="price-item-desc">Schritt 1+2</span></div>
+          <span class="price-item-price">ab CHF 45</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Keratin Glättung</span><span class="price-item-desc">ca. 2–3 Std.</span></div>
+          <span class="price-item-price">ab CHF 320</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Intensive Haarkur</span></div>
+          <span class="price-item-price">ab CHF 35</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Kopfhaut-Massage</span><span class="price-item-desc">entspannend & pflegend</span></div>
+          <span class="price-item-price">CHF 30</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bridal -->
+    <div class="price-card">
+      <div class="price-card-header">
+        <span class="price-cat">Hochzeit & Events</span>
+        <div class="price-name">Bridal & Styling</div>
+      </div>
+      <div class="price-card-body">
+        <div class="price-item">
+          <div><span class="price-item-name">Braut-Hochsteckfrisur</span><span class="price-item-desc">inkl. Probe-Termin</span></div>
+          <span class="price-item-price">ab CHF 220</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Event-Styling</span></div>
+          <span class="price-item-price">ab CHF 120</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Curls & Waves</span></div>
+          <span class="price-item-price">ab CHF 80</span>
+        </div>
+        <div class="price-item">
+          <div><span class="price-item-name">Hair-up / Zopf</span></div>
+          <span class="price-item-price">ab CHF 60</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:3rem;">
+    <p style="color:var(--taupe);font-size:0.8rem;margin-bottom:1.2rem;">Preise verstehen sich als Richtwerte. Genaue Offerte nach Erstberatung.</p>
+    <a href="buchen.html" class="btn btn-gold">Termin buchen →</a>
+  </div>
+</section>
+
+<!-- ═══ CAROUSEL 1: STYLES ═══ -->
+<section class="section">
+  <div class="carousel-section fade-up">
+    <div class="carousel-header">
+      <div>
+        <span class="label">Schnitt & Styling</span>
+        <h2 class="section-title" style="font-size:1.8rem;">Unsere <em>Schnitte</em></h2>
+      </div>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="car-btn" id="car-cuts-prev">←</button>
+        <button class="car-btn" id="car-cuts-next">→</button>
+      </div>
+    </div>
+    <div class="carousel-track-wrap" id="car-cuts">
+      <div class="carousel-track">
+        <!-- Card 2 -->
+        <div class="carousel-card cc-cuts-2">
+          <div class="cc-img">
+            <div class="cc-after cc-style" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;letter-spacing:0.08em;font-style:italic;color:rgba(184,147,90,0.4);text-align:center;padding:1rem;">✦<br>Bob Nachher</div></div>
+            <div class="cc-before cc-before-style" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;letter-spacing:0.08em;font-style:italic;color:rgba(30,24,18,0.35);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">French Bob</div><p class="cc-desc">Kurz, frech, pariserisch.</p><span class="cc-price">ab CHF 85</span></div>
+        </div>
+        <!-- Card 3 -->
+        <div class="carousel-card cc-cuts-3">
+          <div class="cc-img">
+            <div class="cc-after" style="background:linear-gradient(160deg,#2a1e10,#4a3020);height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.4);text-align:center;padding:1rem;">✦<br>Layers Nachher</div></div>
+            <div class="cc-before cc-before-cut" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.35);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Curtain Layers</div><p class="cc-desc">Volumen durch gestufte Layers.</p><span class="cc-price">ab CHF 110</span></div>
+        </div>
+        <!-- Card 4 -->
+        <div class="carousel-card cc-cuts-4">
+          <div class="cc-img">
+            <div class="cc-after cc-cut" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Pixie Nachher</div></div>
+            <div class="cc-before cc-before-style" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.35);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Pixie Cut</div><p class="cc-desc">Mutig, modern, unverwechselbar.</p><span class="cc-price">ab CHF 80</span></div>
+        </div>
+        <!-- Card 5 -->
+        <div class="carousel-card cc-cuts-5">
+          <div class="cc-img">
+            <div class="cc-after cc-style" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.4);text-align:center;padding:1rem;">✦<br>Herren Nachher</div></div>
+            <div class="cc-before cc-before-cut" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.35);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Herrenschnitt Premium</div><p class="cc-desc">Klassisch oder modern – du wählst.</p><span class="cc-price">ab CHF 65</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-dots" id="car-cuts-dots"></div>
+  </div>
+
+  <!-- ═══ CAROUSEL 2: BLONDIERT ═══ -->
+  <div class="carousel-section fade-up" style="margin-top:4rem;">
+    <div class="carousel-header">
+      <div>
+        <span class="label">Blondierungen</span>
+        <h2 class="section-title" style="font-size:1.8rem;">Blondiert & <em>Gelichtet</em></h2>
+      </div>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="car-btn" id="car-styles-prev">←</button>
+        <button class="car-btn" id="car-styles-next">→</button>
+      </div>
+    </div>
+    <div class="carousel-track-wrap" id="car-styles">
+      <div class="carousel-track">
+        <div class="carousel-card cc-blonde-1">
+          <div class="cc-img">
+            <div class="cc-after" style="background:linear-gradient(160deg,#d4c090,#e8d8a0);height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(90,70,20,0.5);text-align:center;padding:1rem;">✦<br>Balayage Nachher</div></div>
+            <div class="cc-before cc-before-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Sun-Kissed Balayage</div><p class="cc-desc">Handgemalt für natürlichen Look.</p><span class="cc-price">ab CHF 180</span></div>
+        </div>
+        <div class="carousel-card cc-blonde-2">
+          <div class="cc-img">
+            <div class="cc-after" style="background:linear-gradient(160deg,#e8e0c0,#f0e8d0);height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(90,70,20,0.4);text-align:center;padding:1rem;">✦<br>Highlights Nachher</div></div>
+            <div class="cc-before cc-before-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Face-Framing Highlights</div><p class="cc-desc">Gezielte Aufhellung rund ums Gesicht.</p><span class="cc-price">ab CHF 130</span></div>
+        </div>
+        <div class="carousel-card cc-blonde-3">
+          <div class="cc-img">
+            <div class="cc-after" style="background:linear-gradient(160deg,#c8b870,#e0d080);height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(90,70,20,0.4);text-align:center;padding:1rem;">✦<br>Platinum Nachher</div></div>
+            <div class="cc-before cc-before-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Platinum Blonde</div><p class="cc-desc">Eisblon für den maximalen Wow-Effekt.</p><span class="cc-price">ab CHF 280</span></div>
+        </div>
+        <div class="carousel-card cc-blonde-4">
+          <div class="cc-img">
+            <div class="cc-after" style="background:linear-gradient(160deg,#d0b860,#e8c870);height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(90,70,20,0.4);text-align:center;padding:1rem;">✦<br>Ombré Nachher</div></div>
+            <div class="cc-before cc-before-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Ombré Effect</div><p class="cc-desc">Sanfter Übergang von dunkel zu hell.</p><span class="cc-price">ab CHF 150</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-dots" id="car-styles-dots"></div>
+  </div>
+
+  <!-- ═══ CAROUSEL 3: GEFÄRBT ═══ -->
+  <div class="carousel-section fade-up" style="margin-top:4rem;">
+    <div class="carousel-header">
+      <div>
+        <span class="label">Colorationen</span>
+        <h2 class="section-title" style="font-size:1.8rem;">Gefärbt & <em>Getönt</em></h2>
+      </div>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="car-btn" id="car-color-prev">←</button>
+        <button class="car-btn" id="car-color-next">→</button>
+      </div>
+    </div>
+    <div class="carousel-track-wrap" id="car-color">
+      <div class="carousel-track">
+        <div class="carousel-card cc-color-1">
+          <div class="cc-img">
+            <div class="cc-after cc-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(212,176,122,0.5);text-align:center;padding:1rem;">✦<br>Kupfer Nachher</div></div>
+            <div class="cc-before cc-before-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Copper Gloss</div><p class="cc-desc">Warme Kupfertöne mit Tiefe.</p><span class="cc-price">ab CHF 160</span></div>
+        </div>
+        <div class="carousel-card cc-color-2">
+          <div class="cc-img">
+            <div class="cc-after" style="background:linear-gradient(160deg,#2d2025,#3d2830);height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.3);text-align:center;padding:1rem;">✦<br>Auburn Nachher</div></div>
+            <div class="cc-before cc-before-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Deep Auburn</div><p class="cc-desc">Satte, dunkle Rot-Brauntöne.</p><span class="cc-price">ab CHF 140</span></div>
+        </div>
+        <div class="carousel-card cc-color-3">
+          <div class="cc-img">
+            <div class="cc-after" style="background:linear-gradient(160deg,#1a1825,#252035);height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(184,147,90,0.3);text-align:center;padding:1rem;">✦<br>Dunkel Nachher</div></div>
+            <div class="cc-before cc-before-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Midnight Brown</div><p class="cc-desc">Tiefes Braun mit kühlem Unterton.</p><span class="cc-price">ab CHF 120</span></div>
+        </div>
+        <div class="carousel-card cc-color-4">
+          <div class="cc-img">
+            <div class="cc-after" style="background:linear-gradient(160deg,#8a6040,#b88058);height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(255,240,210,0.4);text-align:center;padding:1rem;">✦<br>Caramel Nachher</div></div>
+            <div class="cc-before cc-before-color" style="height:100%;"><div style="font-family:var(--serif);font-size:0.7rem;font-style:italic;color:rgba(30,24,18,0.4);text-align:center;padding:1rem;">✦<br>Vorher</div></div>
+          </div>
+          <div class="cc-body"><div class="cc-name">Caramel Glaze</div><p class="cc-desc">Wärmendes Karamell-Glossing.</p><span class="cc-price">ab CHF 135</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-dots" id="car-color-dots"></div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-brand-name">✦ Atelier Meier</span>
+      <span class="footer-brand-sub">Coiffeur · Zürich</span>
+      <p>Ihr Premium-Coiffeur im Herzen Zürichs.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="produkte.html">Leistungen</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="buchen.html">Termin</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-col"><h4>Leistungen</h4><ul><li><a href="#">Schnitt</a></li><li><a href="#">Balayage</a></li><li><a href="#">Färben</a></li><li><a href="#">Treatments</a></li><li><a href="#">Bridal</a></li></ul></div>
+    <div class="footer-col"><h4>Kontakt</h4><div class="footer-contact-line"><span>📍</span><span>Musterstrasse 12, 8004 Zürich</span></div><div class="footer-contact-line"><span>📞</span><span>+41 44 123 45 67</span></div><div class="footer-contact-line"><span>✉</span><span>info@atelier-meier.ch</span></div></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Atelier Meier – Coiffeur Zürich</p>
+    <div class="footer-bottom-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a></div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

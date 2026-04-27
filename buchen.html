@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termin buchen — Atelier Meier Zürich</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--espresso), #2a1e10, var(--espresso-mid));
+      padding: calc(var(--header-h) + 4rem) 5% 4rem;
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,transparent,transparent 60px,rgba(184,147,90,0.02) 61px); }
+    .page-hero-content { position:relative; z-index:1; }
+
+    /* Time slots */
+    .time-slots { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .time-slot { position: relative; }
+    .time-slot input { position: absolute; opacity: 0; width: 0; }
+    .time-slot-label {
+      display: block; padding: 0.45rem 0.9rem;
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius); cursor: pointer;
+      font-size: 0.8rem; color: var(--espresso-mid);
+      background: var(--offwhite); transition: all 0.2s;
+      font-family: var(--sans);
+    }
+    .time-slot input:checked + .time-slot-label {
+      background: var(--espresso); color: var(--cream); border-color: var(--espresso);
+    }
+    .time-slot-label:hover { border-color: var(--gold); }
+    .time-slot.unavailable .time-slot-label {
+      opacity: 0.3; cursor: not-allowed; text-decoration: line-through;
+    }
+
+    /* Progress steps */
+    .booking-steps {
+      display: flex; align-items: center; gap: 0; margin-bottom: 2.5rem;
+    }
+    .step { display: flex; align-items: center; gap: 0.5rem; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--sand); color: var(--taupe);
+      font-size: 0.72rem; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--sans); flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .step.active .step-num { background: var(--gold); color: var(--espresso); }
+    .step.done .step-num { background: var(--espresso); color: var(--cream); }
+    .step-label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); }
+    .step.active .step-label { color: var(--gold-dark); font-weight: 500; }
+    .step-line { flex: 1; height: 1px; background: var(--sand); margin: 0 0.5rem; }
+
+    /* Success state */
+    #booking-success {
+      display: none;
+      background: var(--espresso);
+      border: 1px solid rgba(184,147,90,0.3);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem; text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="nav-logo">✦ Atelier Meier<span>Coiffeur · Zürich</span></a>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="produkte.html">Leistungen</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="buchen.html" class="active">Termin</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+  <div class="nav-right">
+    <a href="buchen.html" class="btn btn-gold">Termin buchen</a>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="index.html">Home</a><a href="produkte.html">Leistungen</a>
+  <a href="galerie.html">Galerie</a><a href="buchen.html">Termin</a><a href="kontakt.html">Kontakt</a>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero">
+  <div class="page-hero-content">
+    <span class="label">Terminbuchung</span>
+    <h1 class="section-title light" style="font-size:clamp(2rem,5vw,3.2rem);">Termin <em>vereinbaren</em></h1>
+    <div class="divider-gold"></div>
+    <p style="color:rgba(247,244,239,0.5);font-size:0.87rem;max-width:440px;">Wähle deinen Wunschtermin – wir bestätigen innerhalb von 24 Stunden.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="booking-layout">
+
+    <!-- FORM -->
+    <div>
+      <!-- Steps -->
+      <div class="booking-steps fade-up">
+        <div class="step active">
+          <span class="step-num">1</span>
+          <span class="step-label">Leistung</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step active">
+          <span class="step-num">2</span>
+          <span class="step-label">Stylist</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step active">
+          <span class="step-num">3</span>
+          <span class="step-label">Termin</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <span class="step-num">4</span>
+          <span class="step-label">Kontakt</span>
+        </div>
+      </div>
+
+      <form id="booking-form">
+
+        <!-- 1. Leistung -->
+        <div class="booking-form-section fade-up">
+          <h3>1 — Gewünschte Leistungen</h3>
+          <p style="font-size:0.82rem;color:var(--taupe);margin-bottom:1.5rem;">Bitte wähle alle Leistungen aus, die du möchtest (Mehrfachauswahl möglich).</p>
+          <div class="service-checkboxes">
+            <div class="service-check-item">
+              <input type="checkbox" id="svc-schnitt" name="service" value="Schnitt & Föhnen">
+              <label class="service-check-label" for="svc-schnitt">
+                <span class="check-icon">✓</span> Schnitt & Föhnen
+              </label>
+            </div>
+            <div class="service-check-item">
+              <input type="checkbox" id="svc-styling" name="service" value="Styling">
+              <label class="service-check-label" for="svc-styling">
+                <span class="check-icon">✓</span> Styling / Blow-out
+              </label>
+            </div>
+            <div class="service-check-item">
+              <input type="checkbox" id="svc-balayage" name="service" value="Balayage">
+              <label class="service-check-label" for="svc-balayage">
+                <span class="check-icon">✓</span> Balayage / Highlights
+              </label>
+            </div>
+            <div class="service-check-item">
+              <input type="checkbox" id="svc-farben" name="service" value="Färben">
+              <label class="service-check-label" for="svc-farben">
+                <span class="check-icon">✓</span> Vollcoloration / Färben
+              </label>
+            </div>
+            <div class="service-check-item">
+              <input type="checkbox" id="svc-treatment" name="service" value="Treatment">
+              <label class="service-check-label" for="svc-treatment">
+                <span class="check-icon">✓</span> Treatment / Pflege
+              </label>
+            </div>
+            <div class="service-check-item">
+              <input type="checkbox" id="svc-herren" name="service" value="Herrenschnitt">
+              <label class="service-check-label" for="svc-herren">
+                <span class="check-icon">✓</span> Herrenschnitt
+              </label>
+            </div>
+            <div class="service-check-item">
+              <input type="checkbox" id="svc-bridal" name="service" value="Bridal">
+              <label class="service-check-label" for="svc-bridal">
+                <span class="check-icon">✓</span> Bridal / Event
+              </label>
+            </div>
+            <div class="service-check-item">
+              <input type="checkbox" id="svc-other" name="service" value="Anderes">
+              <label class="service-check-label" for="svc-other">
+                <span class="check-icon">✓</span> Anderes / Beratung
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Stylist -->
+        <div class="booking-form-section fade-up">
+          <h3>2 — Wunsch-Stylist/in</h3>
+          <p style="font-size:0.82rem;color:var(--taupe);margin-bottom:1.5rem;">Optional: Wenn du eine bestimmte Person bevorzugst, wähle sie hier.</p>
+          <div class="stylist-grid">
+            <div class="stylist-pick">
+              <input type="radio" name="stylist" id="sty-any" value="Egal" checked>
+              <label class="stylist-pick-label" for="sty-any">
+                <div class="stylist-pick-av">✦</div>
+                <span class="stylist-pick-name">Egal</span>
+                <span class="stylist-pick-spec">Nächste/r frei</span>
+              </label>
+            </div>
+            <div class="stylist-pick">
+              <input type="radio" name="stylist" id="sty-max" value="Max Mustermann">
+              <label class="stylist-pick-label" for="sty-max">
+                <div class="stylist-pick-av">MM</div>
+                <span class="stylist-pick-name">Max</span>
+                <span class="stylist-pick-spec">Inhaber</span>
+              </label>
+            </div>
+            <div class="stylist-pick">
+              <input type="radio" name="stylist" id="sty-lena" value="Lena Koch">
+              <label class="stylist-pick-label" for="sty-lena">
+                <div class="stylist-pick-av">LK</div>
+                <span class="stylist-pick-name">Lena</span>
+                <span class="stylist-pick-spec">Colour</span>
+              </label>
+            </div>
+            <div class="stylist-pick">
+              <input type="radio" name="stylist" id="sty-nina" value="Nina Ammann">
+              <label class="stylist-pick-label" for="sty-nina">
+                <div class="stylist-pick-av">NA</div>
+                <span class="stylist-pick-name">Nina</span>
+                <span class="stylist-pick-spec">Senior</span>
+              </label>
+            </div>
+            <div class="stylist-pick">
+              <input type="radio" name="stylist" id="sty-tom" value="Tom Pfister">
+              <label class="stylist-pick-label" for="sty-tom">
+                <div class="stylist-pick-av">TP</div>
+                <span class="stylist-pick-name">Tom</span>
+                <span class="stylist-pick-spec">Herren</span>
+              </label>
+            </div>
+            <div class="stylist-pick">
+              <input type="radio" name="stylist" id="sty-sara" value="Sara Aslan">
+              <label class="stylist-pick-label" for="sty-sara">
+                <div class="stylist-pick-av">SA</div>
+                <span class="stylist-pick-name">Sara</span>
+                <span class="stylist-pick-spec">Stylistin</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Datum & Zeit -->
+        <div class="booking-form-section fade-up">
+          <h3>3 — Datum & Uhrzeit</h3>
+          <div class="form-row" style="margin-bottom:1.5rem;">
+            <div class="form-group">
+              <label class="form-label">Wunschdatum</label>
+              <input type="date" class="form-input" id="booking-date" name="date" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Alternativdatum (optional)</label>
+              <input type="date" class="form-input" name="date-alt">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="margin-bottom:0.8rem;">Bevorzugte Uhrzeit</label>
+            <div class="time-slots">
+              <div class="time-slot"><input type="radio" name="time" id="t1" value="09:00"><label class="time-slot-label" for="t1">09:00</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t2" value="09:30"><label class="time-slot-label" for="t2">09:30</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t3" value="10:00"><label class="time-slot-label" for="t3">10:00</label></div>
+              <div class="time-slot unavailable"><input type="radio" name="time" id="t4" value="10:30" disabled><label class="time-slot-label" for="t4">10:30</label></div>
+              <div class="time-slot unavailable"><input type="radio" name="time" id="t5" value="11:00" disabled><label class="time-slot-label" for="t5">11:00</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t6" value="11:30"><label class="time-slot-label" for="t6">11:30</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t7" value="12:00"><label class="time-slot-label" for="t7">12:00</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t8" value="13:00"><label class="time-slot-label" for="t8">13:00</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t9" value="13:30"><label class="time-slot-label" for="t9">13:30</label></div>
+              <div class="time-slot unavailable"><input type="radio" name="time" id="t10" value="14:00" disabled><label class="time-slot-label" for="t10">14:00</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t11" value="14:30"><label class="time-slot-label" for="t11">14:30</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t12" value="15:00"><label class="time-slot-label" for="t12">15:00</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t13" value="15:30"><label class="time-slot-label" for="t13">15:30</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t14" value="16:00"><label class="time-slot-label" for="t14">16:00</label></div>
+              <div class="time-slot unavailable"><input type="radio" name="time" id="t15" value="16:30" disabled><label class="time-slot-label" for="t15">16:30</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t16" value="17:00"><label class="time-slot-label" for="t16">17:00</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t17" value="17:30"><label class="time-slot-label" for="t17">17:30</label></div>
+              <div class="time-slot"><input type="radio" name="time" id="t18" value="18:00"><label class="time-slot-label" for="t18">18:00</label></div>
+            </div>
+            <p style="font-size:0.72rem;color:var(--taupe);margin-top:0.8rem;">Durchgestrichen = bereits belegt. Endgültige Bestätigung per E-Mail.</p>
+          </div>
+        </div>
+
+        <!-- 4. Kontakt -->
+        <div class="booking-form-section fade-up">
+          <h3>4 — Deine Kontaktdaten</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Vorname *</label>
+              <input type="text" class="form-input" name="firstname" placeholder="Dein Vorname" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nachname *</label>
+              <input type="text" class="form-input" name="lastname" placeholder="Dein Nachname" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">E-Mail *</label>
+              <input type="email" class="form-input" id="checkout-email" name="email" placeholder="deine@email.ch" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telefon</label>
+              <input type="tel" class="form-input" name="phone" placeholder="+41 79 000 00 00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notiz / Wünsche (optional)</label>
+            <textarea class="form-textarea" name="note" placeholder="Z.B. Allergieinformationen, Haartyp, spezifische Wünsche oder Fragen an deinen Stylisten..."></textarea>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.7rem;margin-top:0.5rem;">
+            <input type="checkbox" id="agb" name="agb" style="margin-top:3px;accent-color:var(--gold);flex-shrink:0;" required>
+            <label for="agb" style="font-size:0.78rem;color:var(--taupe);cursor:pointer;">Ich akzeptiere die <a href="#" style="color:var(--gold-dark);text-decoration:underline;">AGB</a> und die <a href="#" style="color:var(--gold-dark);text-decoration:underline;">Datenschutzerklärung</a>.</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;padding:1rem;font-size:0.8rem;border-radius:var(--radius);">
+          Termin anfragen →
+        </button>
+
+      </form>
+
+      <!-- Success -->
+      <div id="booking-success">
+        <div style="font-size:2.5rem;margin-bottom:1.2rem;color:var(--gold);">✦</div>
+        <h3 style="font-family:var(--serif);font-size:1.5rem;color:var(--cream);font-weight:400;margin-bottom:0.8rem;">Anfrage gesendet!</h3>
+        <p style="font-size:0.88rem;color:rgba(247,244,239,0.55);line-height:1.8;max-width:420px;margin:0 auto 1.5rem;">Vielen Dank für deine Terminanfrage. Wir melden uns innerhalb von 24 Stunden per E-Mail mit einer Bestätigung.</p>
+        <a href="index.html" class="btn btn-gold" style="margin:0 auto;">Zurück zur Startseite</a>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="booking-sidebar">
+      <div class="booking-info-card">
+        <h4>Salon Info</h4>
+        <div class="info-row">
+          <span class="info-row-icon">📍</span>
+          <div class="info-row-text">
+            <strong>Adresse</strong>
+            Musterstrasse 12<br>8004 Zürich
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-row-icon">🕐</span>
+          <div class="info-row-text">
+            <strong>Öffnungszeiten</strong>
+            Di–Fr: 9:00–19:00 Uhr<br>
+            Sa: 9:00–17:00 Uhr<br>
+            Mo & So: Geschlossen
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-row-icon">📞</span>
+          <div class="info-row-text">
+            <strong>Telefon</strong>
+            +41 44 123 45 67
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-row-icon">✉</span>
+          <div class="info-row-text">
+            <strong>E-Mail</strong>
+            info@atelier-meier.ch
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-info-card">
+        <h4>Hinweise</h4>
+        <div style="font-size:0.82rem;color:rgba(247,244,239,0.5);line-height:1.8;display:flex;flex-direction:column;gap:0.8rem;">
+          <div>🔔 Bitte erscheine 5 Min. vor dem Termin.</div>
+          <div>❌ Absagen bitte mind. 24 Std. vorher.</div>
+          <div>📷 Bringe gerne Inspirationsfotos mit.</div>
+          <div>💛 Erstberatung ist immer kostenlos.</div>
+        </div>
+      </div>
+
+      <a href="produkte.html" class="btn btn-outline-dark" style="width:100%;justify-content:center;">Alle Preise ansehen →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-brand-name">✦ Atelier Meier</span>
+      <span class="footer-brand-sub">Coiffeur · Zürich</span>
+      <p>Premium Coiffeur im Herzen Zürichs seit 2011.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon-btn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="produkte.html">Leistungen</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="buchen.html">Termin</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-col"><h4>Kontakt</h4><div class="footer-contact-line"><span>📍</span><span>Musterstrasse 12, 8004 Zürich</span></div><div class="footer-contact-line"><span>📞</span><span>+41 44 123 45 67</span></div></div>
+    <div class="footer-col"><h4>Info</h4><ul><li><a href="#">Impressum</a></li><li><a href="#">Datenschutz</a></li><li><a href="#">AGB</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Atelier Meier – Coiffeur Zürich</p>
+    <div class="footer-bottom-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
